@@ -16,8 +16,8 @@
 
 .lightning {
     position:absolute;
-    height:100%;
-    width:100%;
+    height:105vh;
+    width:105vw;
     object-fit:cover;
 }
 
