@@ -1,66 +1,656 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1925px) {
+    .introRightImage {
+        width:45vw;
+        clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 20% 100%);
+    }
     .title {
-        font-size:45px;
+        font-size:75px;
     }
     .divider {
-        margin-top:0px;
+        margin-top:-60px;
+    }
+    .bottomText {
+        font-size:26px;
+    }
+    .inquiryForm {
+        top:20%; right:15%;
+        transform:scale(1.05);
+    }
+    
+    .aboutSection {
+        padding:80px 5% 150px 5%;
+    }
+    .aboutBio {
+        width:45%; margin-left:5%;
+    }
+    .aboutImage {
+        width:45.5%; height: 600px;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .introSection {
+        height:75vh;
+        min-height:800px;
+    }
+
+    .introRightImage {
+        height:75vh;
+        min-height:800px;
+    }
+    .header {
+        top:22%;
+    }
+    .title {
         width:400px;
+        font-size:65px;
+    }
+    .divider {
+        margin-top:-40px;
+        width:320px;
+    }
+    .bottomText {
+        font-size:24px;
+    }
+    .inquiryForm {
+        top:11%; right:15%;
+        transform:scale(0.9);
+    }
+    
+    .aboutSection {
+        padding:90px 5% 80px 5%;
+    }
+    .aboutBio {
+        padding:20px 60px 40px 60px;
+    }
+    .aboutHeader {
+        font-size:32px;
+    }
+    .aboutSubheader {
+        font-size:19px;
+        line-height:32px;
+        letter-spacing:0.5px;
+    }
+    .aboutText {
+        font-size:17px;
+        line-height:30px;
+        letter-spacing:1px;
+        margin-top:35px;
+    }
+    .aboutImage {
+        width:45.5%; height: 450px;
+        transform:translateY(100px);
+    }
+
+    .contactSection {
+        height:450px;
+    }
+    .contactHeader {
+        margin:70px 0 40px 0;
+        font-size:40px;
+    }
+    .contactText {
+        margin-left:30px;
+        font-size:18px;
+        line-height:30px;
+    }
+    #phoneIcon, #faxIcon, #licenseIcon {
+        transform:scale(1.6);
+    }
+
+    .copyright, .powered {
+        font-size:17px;
+    }
+}
+
+@media only screen and (max-width: 1380px) {
+    .introSection {
+        min-height:700px;
+    }
+    .introRightImage {
+        min-height:710px;
+    }
+    .header {
+        top:22%;
+    }
+    .title {
+        width:400px;
+        font-size:55px;
+    }
+    .divider {
+        margin-top:-30px;
+        width:280px;
     }
     .bottomText {
         font-size:20px;
     }
+    .inquiryForm {
+        top:7%; right:13%;
+        transform:scale(0.8);
+    }
 
-    @keyframes dividerWidth {
-        from {
-            width: 0px;
-        } to {
-            width:400px;
-        }
-    } 
+    .aboutSection {
+        padding:100px 5% 70px 5%;
+    }
+    .aboutBio {
+        padding:10px 60px 30px 60px;
+        width:47%; margin-left:3%;
+    }
+    .aboutHeader {
+        font-size:28px;
+    }
+    .aboutSubheader {
+        font-size:18px;
+        line-height:28px;
+    }
+    .aboutText {
+        font-size:15px;
+        line-height:30px;
+        letter-spacing:1px;
+        margin-top:28px;
+    }
+    .aboutImage {
+        width:47.5%; height: 400px;
+        transform:translateY(100px);
+    }
+
+    .contactSection {
+        height:400px;
+    }
+    .contactHeader {
+        margin:60px 0 40px 0;
+        font-size:35px;
+    }
+    .contactText {
+        margin-left:30px;
+        font-size:18px;
+        line-height:25px;
+    }
+    #phoneIcon, #faxIcon, #licenseIcon {
+        transform:scale(1.5);
+    }
+
+    .copyright, .powered {
+        font-size:16px;
+    }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 1030px) {
+    .introSection {
+        min-height:570px;
+    }
+    .introRightImage {
+        min-height:580px;
+    }
+    .header {
+        top:20%;
+    }
     .title {
-        font-size:32px;
-        letter-spacing: 1px;
+        width:300px;
+        font-size:45px;
     }
     .divider {
+        margin-top:-10px;
+        width:220px;
+    }
+    .bottomText {
+        font-size:17px;
+    }
+    .inquiryForm {
+        top:0%; right:6%;
+        transform:scale(0.7);
+    }
+
+    .aboutSection {
+        padding:100px 5% 0px 5%;
+    }
+    .aboutBio {
+        padding:0 40px 10px 40px;
+        width:80%; margin-left:1%;
+    }
+    .aboutHeader {
+        font-size:26px;
+    }
+    .aboutSubheader {
+        font-size:17px;
+        line-height:28px;
+    }
+    .aboutText {
+        font-size:14px;
+        line-height:26px;
+        letter-spacing:1px;
+        margin-top:28px;
+    }
+    .aboutImage {
+        transform:translateY(-40px);
+        width:58%; height: 250px;
+        margin-left:42%;
+    }
+
+    .contactSection {
+        margin-top:70px;
+        height:350px;
+    }
+    .contactHeader {
+        margin:60px 0 30px 0;
+        font-size:32px;
+    }
+    .contactText {
+        margin-left:26px;
+        font-size:16px;
+        line-height:20px;
+    }
+    #phoneIcon, #faxIcon, #licenseIcon {
+        transform:scale(1.4);
+    }
+
+    .footer {
+        height:100px;
+    }
+    .copyright, .powered {
+        font-size:15px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .introSection {
+        height:600px;
+        min-height:0;
+    }
+    .introRightImage {
+        top:380px;
+        min-height:0;
+        height:550px; width:100vw;
+        clip-path: polygon(0% 15%, 100% 0%, 100% 85%, 0% 100%);
+        transform:none;
+    }
+    .header {
+        top:60px;
+    }
+    .title {
+        width:auto;
+        font-size:50px;
+    }
+    .divider {
+        margin-top:-25px;
+        width:350px;
+    }
+    .bottomText {
+        font-size:20px;
+    }
+    .inquiryForm {
+        top:370px; left:50%;
+        transform:scale(0.8) translateX(-50%);
+        transform-origin:0 0;
+    }
+
+    .aboutSection {
+        padding:400px 5% 0px 5%;
+    }
+    .aboutBio {
+        padding:0 40px 80px 40px;
+        width:80%; margin-left:1%;
+    }
+    .aboutHeader {
+        font-size:26px;
+    }
+    .aboutSubheader {
+        font-size:17px;
+        line-height:28px;
+    }
+    .aboutText {
+        font-size:14px;
+        line-height:26px;
+        letter-spacing:1px;
+        margin-top:28px;
+    }
+    .aboutImage {
+        transform:translateY(-60px);
+        width:78%; height: 300px;
+        margin-left:20%;
+    }
+
+    .contactSection {
+        margin-top:70px;
+        height:350px;
+    }
+    .contactHeader {
+        margin:60px 0 30px 0;
+        font-size:32px;
+    }
+    .contactText {
+        margin-left:26px;
+        font-size:16px;
+        line-height:20px;
+    }
+    #phoneIcon, #faxIcon, #licenseIcon {
+        transform:scale(1.4);
+    }
+
+    .footer {
+        justify-content: center;
+        height:100px;
+        padding-right:0;
+        column-gap:20%;
+    }
+    .copyright, .powered {
+        font-size:15px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .introSection {
+        height:400px;
+    }
+    .introRightImage {
+        top:320px;
+        height:450px;
+    }
+    .header {
+        top:40px;
+    }
+    .title {
+        font-size:40px;
+    }
+    .divider {
+        margin-top:-25px;
+        width:320px;
+    }
+    .bottomText {
+        font-size:20px;
+    }
+    .inquiryForm {
+        top:300px;
+        transform:scale(0.8) translateX(-50%);
+    }
+
+    .aboutSection {
+        padding:450px 5% 0px 5%;
+    }
+    .aboutBio {
+        width:90%; margin-left:1%;
+    }
+    .aboutImage {
+        width:85%; height: 300px;
+        margin-left:12%;
+    }
+
+    .footer {
+        height:100px;
+        column-gap:10%;
+    }
+    .copyright, .powered {
+        font-size:12px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .introSection {
+        height:400px;
+        min-height:0;
+    }
+    .introRightImage {
+        top:320px;
+        min-height:0;
+        height:450px; width:100vw;
+    }
+    .header {
+        top:40px;
+        text-align:center;
+        left:auto;
+        margin-right:0;
+    }
+    .title {
+        padding: 0 10px;
+        width:100%;
+        font-size:38px;
+    }
+    .divider {
+        margin:-10px auto 0 auto;
         width:300px;
     }
     .bottomText {
-        margin-top:30px;
-        font-size:14px;
-        letter-spacing: 0px;
+        font-size:18px;
+    }
+    .inquiryForm {
+        top:300px; left:50%;
+        transform:scale(0.8) translateX(-50%);
+        transform-origin:0 0;
     }
 
-    @keyframes dividerWidth {
-        from {
-            width: 0px;
-        } to {
-            width:300px;
-        }
-    } 
+    .aboutSection {
+        padding:450px 5% 0px 5%;
+    }
+    .aboutBio {
+        padding:0 40px 80px 40px;
+        width:90%; margin-left:1%;
+    }
+    .aboutHeader {
+        font-size:26px;
+    }
+    .aboutSubheader {
+        font-size:15px;
+        line-height:25px;
+    }
+    .aboutText {
+        font-size:13px;
+        line-height:24px;
+        letter-spacing:1px;
+        margin-top:28px;
+    }
+    .aboutImage {
+        transform:translateY(-60px);
+        width:85%; height: 250px;
+        margin-left:12%;
+    }
+
+    .contactSection {
+        margin-top:50px;
+        height:280px;
+    }
+    .contactBio {
+        left:45%;
+    }
+    .contactHeader {
+        margin:40px 0 25px 0;
+        font-size:26px;
+    }
+    .contactText {
+        margin-left:26px;
+        font-size:14px;
+        line-height:16px;
+    }
+    #phoneIcon, #faxIcon, #licenseIcon {
+        transform:scale(1.2);
+    }
+    .contactImage {
+        width:35vw;
+        transform:scale(1.05);
+    }
+
+    .copyright, .powered {
+        font-size:10px;
+    }
 }
 
-@media only screen and (max-width: 300px) {
-    .title {
-        font-size:24px;
-        letter-spacing: 1px;
+@media only screen and (max-width: 400px) {
+    .introSection {
+        height:420px;
+        min-height:0;
+    }
+    .introRightImage {
+        top:340px;
+        min-height:0;
+        height:450px; width:100vw;
+    }
+    .header {
+        top:40px;
+        text-align:center;
+        left:auto;
+        margin-right:0;
     }
     .divider {
-        width:200px;
+        margin:-15px auto 0 auto;
+        width:220px;
     }
     .bottomText {
         margin-top:30px;
-        font-size:12px;
-        letter-spacing: 0px;
+        font-size:16px;
+    }
+    .inquiryForm {
+        top:320px; left:50%;
+        transform:scale(0.7) translateX(-50%);
+        transform-origin:0 0;
     }
 
-    @keyframes dividerWidth {
-        from {
-            width: 0px;
-        } to {
-            width:200px;
-        }
-    } 
+    .aboutSection {
+        padding:430px 3% 0px 3%;
+    }
+    .aboutBio {
+        padding:0 30px 80px 30px;
+        width:95%; margin-left:0;
+    }
+    .aboutHeader {
+        font-size:24px;
+    }
+    .aboutSubheader {
+        font-size:14px;
+        line-height:25px;
+    }
+    .aboutText {
+        font-size:13px;
+        line-height:24px;
+        letter-spacing:0.5px;
+        margin-top:28px;
+    }
+    .aboutImage {
+        transform:translateY(-60px);
+        width:85%; height: 250px;
+        margin-left:12%;
+    }
+
+    .contactSection {
+        margin-top:30px;
+        height:280px;
+    }
+    .contactBio {
+        left:43%;
+    }
+    .contactHeader {
+        margin:50px 0 25px 0;
+        font-size:24px;
+    }
+    .contactText {
+        margin-left:22px;
+        letter-spacing:0.5px;
+        font-size:13px;
+        line-height:16px;
+    }
+    #phoneIcon, #faxIcon, #licenseIcon {
+        transform:scale(1.1);
+    }
+    .contactImage {
+        width:35vw;
+        transform:scale(1.05);
+    }
+
+    .footer {
+        height:80px;
+    }
+    .copyright, .powered {
+        font-size:10px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .introSection {
+        height:420px;
+        min-height:0;
+    }
+    .introRightImage {
+        top:340px;
+        min-height:0;
+        height:350px; width:100vw;
+    }
+    .header {
+        top:40px;
+        text-align:center;
+        left:auto;
+        margin-right:0;
+    }
+    .title {
+        font-size:34px;
+    }
+    .divider {
+        margin:-15px auto 0 auto;
+        width:190px;
+    }
+    .bottomText {
+        margin-top:20px;
+        font-size:15px;
+        line-height:30px;
+        letter-spacing:2px;
+    }
+    .inquiryForm {
+        top:320px; left:50%;
+        transform:scale(0.6) translateX(-50%);
+    }
+
+    .aboutSection {
+        padding:330px 3% 0px 3%;
+    }
+    .aboutBio {
+        padding:0 25px 80px 25px;
+        width:100%; margin-left:0;
+    }
+    .aboutHeader {
+        font-size:22px;
+    }
+    .aboutSubheader {
+        font-size:13px;
+        line-height:20px;
+    }
+    .aboutText {
+        font-size:12px;
+        line-height:20px;
+        letter-spacing:0.5px;
+        margin-top:22px;
+    }
+    .aboutImage {
+        transform:translateY(-60px);
+        width:85%; height: 200px;
+        margin-left:12%;
+    }
+
+    .contactSection {
+        margin-top:20px;
+        height:250px;
+    }
+    .contactBio {
+        left:35%;
+    }
+    .contactHeader {
+        margin:40px 0 25px 0;
+        font-size:22px;
+    }
+    .contactText {
+        margin-left:22px;
+        letter-spacing:0.5px;
+        font-size:12px;
+        line-height:12px;
+    }
+    #phoneIcon, #faxIcon, #licenseIcon {
+        transform:scale(1);
+    }
+    .contactImage {
+        width:25vw;
+        transform:scale(1.05);
+    }
+
+    .footer {
+        height:60px;
+    }
+    .powered {
+        display:none;
+    }
 }
