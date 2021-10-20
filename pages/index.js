@@ -1,7 +1,49 @@
 import Head from 'next/head'
 import React from 'react';
 
+var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
+
 class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      note: '',
+    }
+  }
+
+  submitForm(e) {
+    e.preventDefault();
+    var name = this.state.firstName + " " + this.state.lastName;
+    Email.send({ 
+      SecureToken: "902363ed-a90e-44aa-a9e6-edf772eebfdb",
+      To: 'sterlin.velazquez37@gmail.com',
+      From: "sterling@turnpikelectric.com",
+      Subject: "New Inquiry from " + name,
+      Body: "<html><p>Name: " + name + "</p></br><p>Email: " + this.state.email + "</p></br><p>Message: " + this.state.note + "</p></br></br></html>",
+    }).then(function () {})
+  }
+
+  setFirstName(e) {
+    var name = e.target.value;
+    this.setState({ firstName: name });
+  }
+  setLastName(e) {
+    var name = e.target.value;
+    this.setState({ lastName: name });
+  }
+  setEmail(e) {
+    var email = e.target.value;
+    this.setState({ email: email });
+  }
+  setNote(e) {
+    var note = e.target.value;
+    this.setState({ note: note });
+  }
+
   render() {
     return (
       <div className="container">
