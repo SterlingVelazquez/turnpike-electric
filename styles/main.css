@@ -19,6 +19,7 @@
     position:absolute;
     top:0; right:0;
     filter:drop-shadow(0 0 20px black) brightness(0.7);
+    pointer-events:none;
 }
 .introRightImage {
     position:absolute;
@@ -122,9 +123,18 @@
     color:rgb(155, 155, 155);
     letter-spacing:0.5px;
 }
+.emailError {
+    width:80%;
+    margin:-10px 0 0px 40px;
+    color:rgb(107, 0, 0);
+    display:none;
+}
+.emailError.active {
+    display:block;
+}
 .inquiryNote {
     display:block;
-    margin:45px 0 0 50%;
+    margin:40px 0 0 50%;
     transform:translateX(-50%);
     width:80%; height:160px;
     border:thin solid rgb(206, 206, 206);
@@ -154,6 +164,55 @@
 }
 .submitButton:hover {
     transform:scale(1.1);
+}
+
+.inquiryFormAnimation {
+    transition:opacity 0.5s, transform 0.5s;
+}
+.inquiryFormAnimation.active {
+    transform:translateX(250px);
+    opacity:0;
+    pointer-events:none;
+}
+.inquiryFormSubmitted {
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    text-align:center;
+    transition: 0.5s 0.3s;
+    transform:translateX(-150px);
+    opacity:0;
+    pointer-events:none;
+}
+.inquiryFormSubmitted.active {
+    transform:translateX(0px);
+    opacity:1;
+}
+.inquiryFormSubmittedHeader {
+    position:absolute;
+    top:40%; left:50%;
+    width:100%;
+    transform:translate(-50%, -80%);
+    font-family: 'Secular One', sans-serif;
+    font-size:40px;
+    color:rgb(82, 82, 82);
+    letter-spacing: 2px;
+    text-shadow: 0 0 0px rgb(0, 0, 0);
+}
+.inquiryFormSubmittedSubheader {
+    position:absolute;
+    top:60%; left:50%;
+    width:90%;
+    transform:translate(-50%, -50%);
+    font-family: 'Raleway', sans-serif;
+    font-size:22px;
+    color:rgb(136, 136, 136);
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 0px rgb(0, 0, 0);
+}
+.submittedExtra {
+    font-size:17px;
+    color:rgb(168, 168, 168);
 }
 
 .submitContainer {

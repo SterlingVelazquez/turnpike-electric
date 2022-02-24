@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React from 'react';
 
 var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
+const emailTest = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
 
 class Home extends React.Component {
 
@@ -16,15 +17,23 @@ class Home extends React.Component {
   }
 
   submitForm(e) {
+    document.getElementById("emailerror").className = "emailError";
     e.preventDefault();
-    var name = this.state.firstName + " " + this.state.lastName;
-    Email.send({ 
+    if (!emailTest.test(this.state.email.toLowerCase()))
+      document.getElementById("emailerror").className = "emailError active";
+    else {
+      var name = this.state.firstName + " " + this.state.lastName;
+      document.getElementById("inquiryformanimation").classList.toggle("active");
+      document.getElementById("inquiryformsubmitted").classList.toggle("active");
+
+    Email.send({
       SecureToken: "902363ed-a90e-44aa-a9e6-edf772eebfdb",
       To: 'sterlin.velazquez37@gmail.com',
-      From: "sterling@turnpikelectric.com",
+      From: "website@turnpikelectric.us",
       Subject: "New Inquiry from " + name,
       Body: "<html><p>Name: " + name + "</p></br><p>Email: " + this.state.email + "</p></br><p>Message: " + this.state.note + "</p></br></br></html>",
-    }).then(function () {})
+    }).then(function () { })
+  }
   }
 
   setFirstName(e) {
@@ -69,27 +78,35 @@ class Home extends React.Component {
           </span>
 
           <form className="inquiryForm" id="inquiryform" onSubmit={e => this.submitForm(e)}>
-            <div className="inquiryContainer" id="inquirycontainer">
-              <p className="inquiryHeader">Make An Inquiry</p>
-              <input className="inquiryInput" id="inquiryfirst" defaultValue="" placeholder="First Name *" onInput={e => this.setFirstName(e)} required></input>
-              <input className="inquiryInput" id="inquirylast" defaultValue="" placeholder="Last Name *" onInput={e => this.setLastName(e)} required></input>
-              <br />
-              <input className="emailInput" id="email" defaultValue="" placeholder="Email *" onInput={e => this.setEmail(e)} required></input>
-              <textarea className="inquiryNote" id="inquirynote" defaultValue="" onInput={e => this.setNote(e)} placeholder="How can we help?"></textarea>
-              <button type="submit" className="submitButton" id="submitbutton">Submit</button>
+            <div className="inquiryFormAnimation" id="inquiryformanimation">
+              <div className="inquiryContainer" id="inquirycontainer">
+                <p className="inquiryHeader">Make An Inquiry</p>
+                <input className="inquiryInput" id="inquiryfirst" defaultValue="" placeholder="First Name *" onInput={e => this.setFirstName(e)} required></input>
+                <input className="inquiryInput" id="inquirylast" defaultValue="" placeholder="Last Name *" onInput={e => this.setLastName(e)} required></input>
+                <br />
+                <input className="emailInput" id="email" defaultValue="" placeholder="Email *" onInput={e => this.setEmail(e)} required></input>
+                <p className="emailError" id="emailerror">Invalid email address</p>
+                <textarea className="inquiryNote" id="inquirynote" defaultValue="" onInput={e => this.setNote(e)} placeholder="How can we help?" required></textarea>
+                <button type="submit" className="submitButton" id="submitbutton">Submit</button>
+              </div>
+              <div className="submitContainer" id="submitcontainer">
+                <p className="sentHeader">Inquiry Sent</p>
+                <p className="sentSubheader" id="sentsubheader"></p>
+              </div>
             </div>
-            <div className="submitContainer" id="submitcontainer">
-              <p className="sentHeader">Inquiry Sent</p>
-              <p className="sentSubheader" id="sentsubheader"></p>
+            <div className="inquiryFormSubmitted" id="inquiryformsubmitted">
+              <p className="inquiryFormSubmittedHeader">Message Sent!</p>
+              <p className="inquiryFormSubmittedSubheader">You should receive a response <br />within 2 business days<br/><br/>
+                <span className="submittedExtra">You can also find our contact info at the bottom of the page</span></p>
             </div>
           </form>
 
           <div className="aboutSection">
             <div className="aboutBio">
               <p className="aboutHeader" id="aboutheader"><b>About Us</b></p>
-              <div className="aboutSubheader" id="aboutsubheader"><b>Founded in 2010 with only one premise... <br/>Quality Over Anything and Everything</b></div>
-              <p className="aboutText">Over 10 years of experience in Commercial, Residential, Hotels and Light Industrial projects. New construction and 
-                remodeling. Fire Alarm, Data, Generators and medium to large UPS installations are also part of our line of work.<br/><br/> We can provide <b>Turnkey Solutions</b></p>
+              <div className="aboutSubheader" id="aboutsubheader"><b>Founded in 2010 with only one premise... <br />Quality Over Anything and Everything</b></div>
+              <p className="aboutText">Over 10 years of experience in Commercial, Residential, Hotels and Light Industrial projects. New construction and
+                remodeling. Fire Alarm, Data, Generators and medium to large UPS installations are also part of our line of work.<br /><br /> We can provide <b>Turnkey Solutions</b></p>
             </div>
             <img className="aboutImage" src="Breaker_Two.jpg"></img>
           </div>
@@ -98,12 +115,14 @@ class Home extends React.Component {
             <img className="contactBackground" src="Monticello_Outside.jpg"></img>
             <div className="contactBio">
               <p className="contactHeader" id="contactheader"><b>Contact Us</b></p>
-              <i class="fas fa-phone-alt" id="phoneIcon"></i>
-              <p className="contactText" id="phone">(786) 712-1024</p>
-              <br/>
+              <a className="phoneLink" href="tel:+17867121024">
+                <i class="fas fa-phone-alt" id="phoneIcon"></i>
+                <p className="contactText" id="phone">(786) 712-1024</p>
+              </a>
+              <br />
               <i class="fas fa-print" id="faxIcon"></i>
               <p className="contactText" id="fax">(305) 675-3711</p>
-              <br/>
+              <br />
               <i class="fas fa-id-badge" id="licenseIcon"></i>
               <p className="contactText" id="license">EC13004836</p>
             </div>
