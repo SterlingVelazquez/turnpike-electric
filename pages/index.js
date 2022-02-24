@@ -28,7 +28,7 @@ class Home extends React.Component {
 
     Email.send({
       SecureToken: "902363ed-a90e-44aa-a9e6-edf772eebfdb",
-      To: 'sterlin.velazquez37@gmail.com',
+      To: 'website@turnpikelectric.us',
       From: "website@turnpikelectric.us",
       Subject: "New Inquiry from " + name,
       Body: "<html><p>Name: " + name + "</p></br><p>Email: " + this.state.email + "</p></br><p>Message: " + this.state.note + "</p></br></br></html>",
