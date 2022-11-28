@@ -27,7 +27,7 @@ class Home extends React.Component {
       document.getElementById("inquiryformsubmitted").classList.toggle("active");
 
     Email.send({
-      SecureToken: "902363ed-a90e-44aa-a9e6-edf772eebfdb",
+      SecureToken: "802e66e4-b8d2-4e2b-8e0e-8fbe8094db4d",
       To: 'website@turnpikelectric.us',
       From: "website@turnpikelectric.us",
       Subject: "New Inquiry from " + name,
