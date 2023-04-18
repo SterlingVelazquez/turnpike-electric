@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react';
+import Application from '../tools/application.js'
 
 var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
 const emailTest = /(?!.*\.{2})^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
@@ -13,6 +14,7 @@ class Home extends React.Component {
       lastName: '',
       email: '',
       note: '',
+      checked: 'checked'
     }
   }
 
@@ -26,14 +28,20 @@ class Home extends React.Component {
       document.getElementById("inquiryformanimation").classList.toggle("active");
       document.getElementById("inquiryformsubmitted").classList.toggle("active");
 
-    Email.send({
-      SecureToken: "802e66e4-b8d2-4e2b-8e0e-8fbe8094db4d",
-      To: 'website@turnpikelectric.us',
-      From: "website@turnpikelectric.us",
-      Subject: "New Inquiry from " + name,
-      Body: "<html><p>Name: " + name + "</p></br><p>Email: " + this.state.email + "</p></br><p>Message: " + this.state.note + "</p></br></br></html>",
-    }).then(function () { })
+      Email.send({
+        SecureToken: "802e66e4-b8d2-4e2b-8e0e-8fbe8094db4d",
+        To: 'website@turnpikelectric.us',
+        From: "website@turnpikelectric.us",
+        Subject: "New Inquiry from " + name,
+        Body: "<html><p>Name: " + name + "</p></br><p>Email: " + this.state.email + "</p></br><p>Message: " + this.state.note + "</p></br></br></html>",
+      }).then(function () { })
+    }
   }
+
+  toggleApply() {
+    document.getElementById("applyform").scrollTo({ top: 0 });
+    document.getElementById("applyform").classList.toggle("show");
+    document.getElementById("fullscreenshadow").classList.toggle("show");
   }
 
   setFirstName(e) {
@@ -70,6 +78,7 @@ class Home extends React.Component {
               <p className="title" id="title">Turnpike Electric</p>
               <div className="divider" id="divider"></div>
               <p className="bottomText">From Tallahassee to the Keys</p>
+              <button className="applyButton" onClick={e => this.toggleApply()}><b>Now Hiring Contractors</b><br/><span className="hiringSubheader">Click Here to Apply</span></button>
             </div>
           </div>
 
@@ -96,7 +105,7 @@ class Home extends React.Component {
             </div>
             <div className="inquiryFormSubmitted" id="inquiryformsubmitted">
               <p className="inquiryFormSubmittedHeader">Message Sent!</p>
-              <p className="inquiryFormSubmittedSubheader">You should receive a response <br />within 2 business days<br/><br/>
+              <p className="inquiryFormSubmittedSubheader">You should receive a response <br />within 2 business days<br /><br />
                 <span className="submittedExtra">You can also find our contact info at the bottom of the page</span></p>
             </div>
           </form>
@@ -131,12 +140,17 @@ class Home extends React.Component {
             </span>
           </div>
 
+          <Application />
+
           <div className="footer">
             <p className="copyright">Copyright © 2021 Turnpike Electric</p>
             <p className="powered">Powered by Turnpike Electric</p>
           </div>
 
         </main>
+
+        <div className="fullScreenShadow" id="fullscreenshadow"></div>
+
       </div>
     )
   }

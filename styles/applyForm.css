@@ -1,0 +1,299 @@
+.fullScreenShadow {
+    position:fixed;
+    top:0; left:0;
+    height:200%; width:200%;
+    background:black;
+    opacity:0;
+    pointer-events:none;
+    transition:0.5s ease-in-out;
+}
+.fullScreenShadow.show {
+    opacity:0.5;
+    pointer-events:all;
+}
+
+.applyButton {
+    padding:15px 25px;
+    background:none;
+    border:thin solid rgb(201, 201, 201);
+    font-family: 'Raleway', sans-serif;
+    color: rgb(179, 179, 179);
+    font-size: 22px;
+    font-weight:100;
+    letter-spacing:1px;
+    animation: titleSlide 2.4s ease-out;
+    text-align:left;
+    cursor:pointer;
+    transition:0.3s;
+}
+.applyButton:hover {
+    transform:scale(1.05);
+}
+.hiringSubheader {
+    position:relative;
+    text-align:left;
+    font-size:17px;
+    top:2px;
+}
+.applyBtnArrow {
+    position:relative;
+    display:inline-table;
+    width:25px; height:16px;
+    filter:invert();
+    margin-left:6px;
+}
+
+.applyForm {
+    position:fixed;
+    text-align:left;
+    top:50%; left:50%;
+    padding-left:40px; 
+    transform:translate(-50%, -50%) translateZ(0) perspective(1px);
+    height:100%; max-height:775px;
+    width:500px;
+    overflow-y:auto;
+    background:white;
+    border-radius:0.5%;
+    box-shadow:0 0 40px rgb(0, 0, 0);
+    opacity:0;
+    pointer-events:none;
+    transition:0.5s ease-in-out;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    z-index:1;
+    font-size:20px;
+}
+.applyForm.show {
+    opacity:1;
+    pointer-events:all;
+}
+.applyForm.submit {
+    height:480px;
+    overflow:hidden;
+}
+.applyContainer {
+    opacity:1;
+    transition:0.5s;
+}
+.applyContainer.hide {
+    pointer-events:none;
+    opacity:0;
+}
+.applyHeader {
+    position:relative;
+    display:inline-block;
+    width:100%;
+    font-size:50px;
+    letter-spacing:0px;
+    margin:0;
+    color:rgb(30, 45, 73);
+    padding:6% 0 1% 0;
+}
+.applySubheader {
+    position:relative;
+    display:inline-block;
+    width:100%;
+    font-size:20px;
+    letter-spacing:0px;
+    line-height:40px;
+    margin:0;
+    color:rgb(30, 45, 73);
+    padding-bottom:10%;
+}
+
+.applyInput {
+    display:inline-block;
+    margin-bottom:30px;
+    width:90%;
+    border:none;
+    border-bottom:thin solid rgb(206, 206, 206);
+    font-size:19px;
+    letter-spacing:2px;
+    outline:none;
+    color:rgb(29, 29, 29);
+}
+.applyInput::placeholder {
+    color:rgb(86, 86, 86);
+    letter-spacing:1px;
+}
+
+.applyField {
+    position:relative;
+    display:inline-table;
+    margin-top:0;
+}
+.dateInput {
+    position:relative;
+    display:inline-block;
+    left:20px;
+    font-size:18px;
+    margin:0 10px 30px 10px;
+    text-align:right;
+    width:13%;
+}
+#datemonthinput, #datedayinput {
+    width:8%;
+}
+.applyDateDivider {
+    position:relative;
+    display:inline-block;
+    margin-top:0;
+    left:20px;
+}
+
+.experienceInput {
+    position:relative;
+    display:inline-block;
+    left:20px;
+    font-size:18px;
+    margin:0 10px 30px 10px;
+    text-align:right;
+    width:8%;
+}
+
+.toolSelect {
+    position:relative;
+    display:inline-block;
+    left:20px;
+    font-size:19px;
+    margin:0 10px 30px 10px;
+    text-align:right;
+    width:12%;
+}
+
+.applyDescription {
+    display:inline-block;
+    width:90%; height:110px;
+    border:thin solid rgb(206, 206, 206);
+    resize:none;
+    font-size:18px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    letter-spacing:0px;
+    padding:6px;
+    color:rgb(29, 29, 29);
+    outline:none;
+}
+.applyDescription::placeholder {
+    color:rgb(101, 101, 101);
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+.applySubmit, .cancelButton {
+    margin:35px 0 30px 0;
+    width:140px; height:40px;
+    font-size:20px;
+    letter-spacing:1px;
+    color:rgb(30, 45, 73);
+    background:none;
+    border:none;
+    cursor:pointer;
+    transition:0.2s;
+}
+.applySubmit {
+    margin-left:0px;
+    border:thin solid rgb(30, 45, 73);
+}
+.cancelButton {
+    margin-left:135px;
+}
+.applySubmit:hover, .cancelButton:hover {
+    background:rgb(238, 238, 238);
+}
+
+.applySubmitContainer {
+    position:absolute;
+    padding:50px 50px 0 10px;
+    top:0;
+    opacity: 0;
+    pointer-events:none;
+    transition:0.5s ease-in-out 0.4s;
+}
+.applySubmitContainer.show {
+    pointer-events:all;
+    opacity:1;
+}
+.applySentHeader {
+    width:100%;
+    font-size:40px;
+    letter-spacing:2px;
+    color:rgb(30, 45, 73);
+    margin:15px 0 40px 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+}
+.applySentSubheader {
+    width:100%;
+    font-size:20px;
+    letter-spacing:1px;
+    line-height:30px;
+    color:rgb(30, 45, 73);
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+}
+.applyCloseButton {
+    text-align:left;
+    padding:6px 15px;
+    margin-top:40px;
+    font-size:20px;
+    letter-spacing:1px;
+    color:rgb(113, 113, 113);
+    background:none;
+    border:thin solid rgb(113, 113, 113);
+    cursor:pointer;
+    transition:0.2s;
+}
+.applyCloseButton:hover {
+    background:rgb(238, 238, 238);
+}
+
+@media only screen and (max-width: 1600px) {
+    .applyButton {
+        padding:13px 22px;
+        font-size: 20px;
+    }
+    .hiringSubheader {
+        font-size:16px;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    .applyButton {
+        padding:11px 18px;
+        font-size: 17px;
+    }
+    .hiringSubheader {
+        font-size:14px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .applyForm {
+        transform:translate(-50%, -50%) translateZ(0) perspective(1px) scale(0.8);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .applyButton {
+        padding:10px 16px;
+        font-size: 15px;
+    }
+    .hiringSubheader {
+        font-size:13px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .applyForm {
+        transform:translate(-50%, -50%) translateZ(0) perspective(1px) scale(0.6);
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .applyButton {
+        padding:10px 14px;
+        font-size: 12px;
+    }
+    .hiringSubheader {
+        font-size:10px;
+    }
+}
